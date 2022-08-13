@@ -67,6 +67,21 @@ async function run() {
             console.log(result);
             res.json(result);
         });
+        //get furnitures Api
+        app.get('/furnitures', async (req, res) => {
+            const cursor = furnitureCollection.find({});
+            const order = await cursor.toArray();
+            res.send(order);
+
+        })
+
+         //get cars Api
+         app.get('/cars', async (req, res) => {
+            const cursor = carsCollection.find({});
+            const order = await cursor.toArray();
+            res.send(order);
+
+        })
 
 
 
@@ -95,6 +110,40 @@ async function run() {
             console.log(result);
             res.json(result);
         });
+
+         //bike POST API
+         app.post('/bikes', async (req, res) => {
+            const bike = req.body;
+            console.log('hit the post order api', bike);
+
+            const result = await bikeCollection.insertOne(bike);;
+            console.log(result);
+            res.json(result);
+        });
+
+
+        //car POST API
+        app.post('/cars', async (req, res) => {
+
+            const car = req.body;
+            console.log('hit the post order api', car);
+
+            const result = await carsCollection.insertOne(car);;
+            console.log(result);
+            res.json(result);
+        });
+
+
+        //furniture POST API
+        app.post('/furnitures', async (req, res) => {
+
+            const furniture = req.body;
+            console.log('hit the post order api', furniture);
+            const result = await furnitureCollection.insertOne(furniture);;
+            console.log(result);
+            res.json(result);
+        });
+
 
 
 
