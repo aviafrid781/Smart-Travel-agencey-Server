@@ -27,6 +27,7 @@ async function run() {
         const servicesCollection = database.collection('services');
         const ordersCollection = database.collection('orders');
 
+      ///hei hello
 
         //Get multiple  api 
         app.get('/services', async (req, res) => {
@@ -56,6 +57,17 @@ async function run() {
 
 
         })
+
+        //bike POST API
+        app.post('/bikes', async (req, res) => {
+            const bike = req.body;
+            console.log('hit the post order api', bike);
+
+            const result = await bikeCollection.insertOne(bike);;
+            console.log(result);
+            res.json(result);
+        });
+
 
 
 
