@@ -62,15 +62,15 @@ async function run() {
 
         })
 
-        //bike POST API
-        app.post('/bikes', async (req, res) => {
-            const bike = req.body;
-            console.log('hit the post order api', bike);
+         //get bikes Api
+         app.get('/bikes', async (req, res) => {
+            const cursor = bikeCollection.find({});
+            const order = await cursor.toArray();
+            res.send(order);
 
-            const result = await bikeCollection.insertOne(bike);;
-            console.log(result);
-            res.json(result);
-        });
+        })
+
+      
         //get furnitures Api
         app.get('/furnitures', async (req, res) => {
             const cursor = furnitureCollection.find({});
@@ -110,7 +110,7 @@ async function run() {
             console.log(result);
             res.json(result);
         });
-        
+
 
         //bike POST API
         app.post('/bikes', async (req, res) => {
@@ -160,11 +160,12 @@ async function run() {
 
     }
     finally {
-        // await client.close();
+     await client.close();
     }
+    
 
 }
-run().catch(console.dir);
+//run().catch(console.dir);
 
 
 app.get('/', (req, res) => {
