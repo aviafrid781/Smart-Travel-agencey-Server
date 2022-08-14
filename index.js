@@ -26,8 +26,10 @@ async function run() {
 
         const servicesCollection = database.collection('services');
         const ordersCollection = database.collection('orders');
-
-      ///hei hello
+        const bikeCollection = database.collection('bikes');
+        const carsCollection = database.collection('cars');
+        const furnitureCollection = database.collection('furnitures');
+        ///hei hello
 
         //Get multiple  api 
         app.get('/services', async (req, res) => {
@@ -75,8 +77,8 @@ async function run() {
 
         })
 
-         //get cars Api
-         app.get('/cars', async (req, res) => {
+        //get cars Api
+        app.get('/cars', async (req, res) => {
             const cursor = carsCollection.find({});
             const order = await cursor.toArray();
             res.send(order);
@@ -111,8 +113,8 @@ async function run() {
             res.json(result);
         });
 
-         //bike POST API
-         app.post('/bikes', async (req, res) => {
+        //bike POST API
+        app.post('/bikes', async (req, res) => {
             const bike = req.body;
             console.log('hit the post order api', bike);
 
