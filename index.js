@@ -46,13 +46,7 @@ async function run() {
             res.send(order);
 
         })
-         //get oder Api
-         app.get('/orders', async (req, res) => {
-            const cursor = ordersCollection.find({});
-            const order = await cursor.toArray();
-            res.send(order);
-
-        })
+         
 
 
 
@@ -94,10 +88,6 @@ async function run() {
         })
 
 
-
-
-
-
         //POST API
         app.post('/services', async (req, res) => {
 
@@ -120,6 +110,7 @@ async function run() {
             console.log(result);
             res.json(result);
         });
+        
 
         //bike POST API
         app.post('/bikes', async (req, res) => {
