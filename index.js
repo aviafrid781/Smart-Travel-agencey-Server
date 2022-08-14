@@ -29,6 +29,7 @@ async function run() {
         const bikeCollection = database.collection('bikes');
         const carsCollection = database.collection('cars');
         const furnitureCollection = database.collection('furnitures');
+
         ///hei hello
 
         //Get multiple  api 
@@ -40,6 +41,13 @@ async function run() {
         })
         //get oder Api
         app.get('/orders', async (req, res) => {
+            const cursor = ordersCollection.find({});
+            const order = await cursor.toArray();
+            res.send(order);
+
+        })
+         //get oder Api
+         app.get('/orders', async (req, res) => {
             const cursor = ordersCollection.find({});
             const order = await cursor.toArray();
             res.send(order);
